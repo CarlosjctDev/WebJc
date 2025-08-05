@@ -1,0 +1,52 @@
+---
+import type { LinkItem } from "@components/menu/interface/linkItem.ts";
+
+interface Props {
+  links: LinkItem[];
+}
+const { links = [] } = Astro.props;
+const linksWithTooltip = links.map((link) => {
+  const tooltipHtml = link.subLinks?.length
+    ? `      
+        ${link.subLinks.map((sub) => `
+          <a 
+            href="${sub.route_complete}" 
+            data-route="${sub.route}"            
+            class="text-center shadow-sm rounded block px-2 py-3
+            text-black dark:text-white hover:text-white  
+            cursor-pointer
+            text-sm capitalize transition-colors duration-300 
+            transform hover:bg-(--app-color-primary)!">
+            <div class="flex justify-center ">${sub.svg ? sub.svg : ""}</div>
+              ${sub.text}         
+          </a>
+        `).join("")}      
+    `
+    : "";
+
+  return { ...link, tooltipHtml };
+});
+---
+<div class="hidden md:flex space-x-8">
+  {
+    linksWithTooltip.map(link => (
+      <div class="relative">        
+        <a
+          href={link.route_complete}
+          data-route-complete={link.route_complete}
+          data-route={link.route}
+          class="nav-link flex items-center gap-2 relative font-semibold text-black dark:text-white focus:outline-hidden transition-colors duration-300"
+          {...(link.tooltipHtml && { 'data-tippy-content': link.tooltipHtml })}
+        >
+          {link.text}
+        </a>
+      </div>
+    ))
+  }
+</div>
+<style is:global>
+  .tippy-content{
+    padding: 0 !important;
+  }
+</style>
+

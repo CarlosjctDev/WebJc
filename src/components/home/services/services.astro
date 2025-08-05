@@ -1,0 +1,71 @@
+---
+import Section from "@components/home/section.astro";
+
+const servicios = [
+    {
+        route: "/image/montajeInstalacion.webp",
+        title: "Montaje e instalación",
+        alt: "Técnicos realizando el montaje e instalación de bandas transportadoras en planta industrial"
+    },    
+    {
+        route: "/image/mantenimiento.webp",
+        title: "Mantenimiento",
+        alt: "Equipo de trabajo dando mantenimiento preventivo a sistema de transporte industrial"
+    },
+    {
+        route: "/image/fabricacionRodillos.webp",
+        title: "Fabricación rodillos de todo tipo según la norma",
+        alt: "Proceso de fabricación de rodillos industriales para bandas transportadoras según normas técnicas"
+    },        
+]
+---
+
+<Section>
+    <div id="servicios" class="scroll-mt-20">
+        <div class="flex items-center gap-2 mb-4">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                viewBox="0 0 640 640"
+                ><path
+                    opacity=".4"
+                    fill="currentColor"
+                    d="M440 192C440 258.3 386.3 312 320 312C253.7 312 200 258.3 200 192C200 125.7 253.7 72 320 72C386.3 72 440 125.7 440 192z"
+                ></path><path
+                    fill="currentColor"
+                    d="M350.5 368L289.5 368C279.8 368 272 375.8 272 385.5C272 389.7 273.5 393.7 276.2 396.9L303.6 428.9L272.6 544L272 544L237.4 405.5C235.2 396.8 226.3 391.5 217.9 394.7C156 418.3 112 478.3 112 548.5C112 563.6 124.3 575.9 139.4 575.9L500.5 575.9C515.6 575.9 527.9 563.6 527.9 548.5C527.9 478.3 483.9 418.3 422 394.7C413.6 391.5 404.7 396.8 402.5 405.5L367.9 544L367.3 544L336.3 428.9L363.7 396.9C366.4 393.7 367.9 389.7 367.9 385.5C367.9 375.8 360.1 368 350.4 368z"
+                ></path></svg
+            >
+            <h2
+                class="text-2xl font-semibold text-gray-700 lg:text-3xl dark:text-white scroll-mt-20"
+            >
+                Servicios
+            </h2>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {servicios.map((servicio) => (
+                <div
+                class="card-app-white dark:bg-zinc-900 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transform hover:scale-105 transition duration-300"
+                >
+                    <img
+                        src={servicio.route}
+                        alt={servicio.alt}
+                        loading="eager"
+                        class="w-full h-48 object-cover mx-auto "
+                    />
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-semibold mb-2 text-gray-800 dark:text-white">
+                        {servicio.title}
+                        </h3>                        
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</Section>

@@ -1,0 +1,72 @@
+---
+import type { LinkItem } from '@components/menu/interface/linkItem.ts';
+interface Props {
+    links: LinkItem[];
+}
+const { links = []  } = Astro.props; 
+---
+<button type="button" 
+popovertarget="menu"  class="md:hidden">
+    <div class="p-4 cursor-pointer" id="hamburger">
+    <div class="hamburger w-6 h-0.5 bg-black dark:bg-white mb-1 hamburger-top"></div>
+    <div class="hamburger w-6 h-0.5 bg-black dark:bg-white mb-1 hamburger-center"></div>
+    <div class="hamburger w-6 h-0.5 bg-black dark:bg-white hamburger-bottom"></div>
+    </div>
+</button>
+
+<div
+    id="menu"		
+    popover	
+    class="ml-auto h-full md:hidden pb-8
+    fondo-app-white dark:bg-zinc-900 text-2xl"
+>
+    <div class="flex flex-col px-8 pt-4 gap-4 ">
+        <div class="text-end">
+            <button 
+            onclick="menu.hidePopover()"                
+            type="button"
+            aria-label="Cerrar menú"                 
+            class="relative w-6 h-6
+                text-black dark:text-white cursor-pointer                
+                hover:text-red-600 active:text-red-700 transition-colors duration-200">
+            <span class="absolute top-1/2 left-0 w-full h-0.5 bg-current rotate-45"></span>
+            <span class="absolute top-1/2 left-0 w-full h-0.5 bg-current -rotate-45"></span>
+            </button>            
+        </div>
+        {links.map((link) => (
+        <div class="flex flex-col gap-2">
+            <span class="flex items-center flex-wrap gap-2">
+            {link.svg && <span set:html={link.svg} />}
+            <a
+                href={link.route_complete}
+                data-route={link.route}
+                data-route-complete={link.route_complete}
+                class="relative nav-link font-semibold text-black dark:text-white focus:outline-hidden transition-colors duration-300 inline-block"
+            >
+                {link.text}
+            </a>
+            </span>
+
+            {link.subLinks && link.subLinks.length > 0 && (
+            <span class="flex flex-col flex-wrap gap-2 pl-2 text-base">
+                {link.subLinks.map((sub) => (
+                    <span class="flex  gap-2">
+                        {sub.svg && <span set:html={sub.svg} />}
+                        <a
+                            href={sub.route_complete}
+                            data-route={sub.route}
+                            data-route-complete={sub.route_complete}
+                            class="relative nav-link text-black dark:text-white focus:outline-hidden transition-colors duration-300 inline-block"
+                        >
+                            {sub.text}
+                        </a>
+                    </span>
+                ))}
+            </span>
+            )}
+        </div>
+        ))}
+
+     
+    </div>
+</div>

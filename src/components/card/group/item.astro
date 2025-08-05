@@ -1,0 +1,27 @@
+---
+interface Props{
+    classContainer?: string;
+    classContainerContent?: string;
+    svg?: string;
+    classContent?: string;
+}
+const { 
+    classContainer = `group relative 
+    card-app-white dark:bg-zinc-900 
+    transition hover:z-[1] hover:shadow-2xl  
+    hover:shadow-zinc-900/10 `,
+    classContainerContent = "relative space-y-8 py-6 p-4 md:py-12 md:p-8",
+    svg = "",
+    classContent = "space-y-2",
+
+ } = Astro.props as Props;
+---
+
+<div class={classContainer}>
+    <div class={classContainerContent}>        
+        {svg && <div set:html={svg} />}
+        <div class={classContent}>
+            <slot/>
+        </div>
+    </div>
+</div>

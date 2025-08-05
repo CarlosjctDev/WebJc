@@ -1,0 +1,15 @@
+---
+interface Props{
+    classP?: string;
+    classExtras?: string;
+    style?: string;
+}
+const { 
+    classP = `hyphens-auto break-words prose dark:prose-invert mt-4 text-gray-500 dark:text-gray-300 `,
+    classExtras = "",
+    style = ""
+ } = Astro.props as Props;
+---
+<p class={classP+classExtras} style={style}>
+    <slot/>
+</p>

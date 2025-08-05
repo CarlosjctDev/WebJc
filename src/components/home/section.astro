@@ -1,0 +1,13 @@
+---
+interface Props {
+	clase?: string;
+    classExtras?: string;
+}
+const { 
+    clase = "fondo-app-white pb-10 pt-1 max-w-7xl mx-auto sm:px-0 md:px-12 xl:px-6", 
+    classExtras = ""
+} = Astro.props;
+---
+<section class={clase+classExtras}>
+    <slot/>
+</section>

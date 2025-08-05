@@ -1,0 +1,12 @@
+---
+interface Props{
+    clase? : string;
+}
+const {
+    clase = "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+ } = Astro.props as Props;
+---
+
+<div class={clase}>
+    <slot/>
+</div>

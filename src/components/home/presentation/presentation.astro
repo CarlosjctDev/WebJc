@@ -1,0 +1,69 @@
+---
+import Section from "@components/home/section.astro";
+import P from "@components/text/p.astro";
+---
+<Section >
+  <div id="inicio"
+    class="scroll-mt-20 md:flex justify-center 
+    md:items-center "
+  >  
+    <div  >
+      <div class="flex items-center gap-2" >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 448 512"
+          width="24"
+          height="24"
+          fill="currentColor"
+        >
+          <defs
+            ><style>
+              .fa-secondary {
+                opacity: 0.4;
+              }
+            </style></defs
+          >
+          <path
+            d="M97.61 208h252.78c-7.95 63.06-61.17 112-126.39 112S105.56 271.06 97.61 208z"
+          ></path><path
+            d="M313.6 352h-16.7a174.1 174.1 0 0 1-145.8 0h-16.7A134.4 134.4 0 0 0 0 486.4 25.6 25.6 0 0 0 25.6 512h396.8a25.6 25.6 0 0 0 25.6-25.6A134.4 134.4 0 0 0 313.6 352zM88 176h272a8 8 0 0 0 8-8v-32a8 8 0 0 0-8-8h-8a112 112 0 0 0-68.4-103.2L256 80V16a16 16 0 0 0-16-16h-32a16 16 0 0 0-16 16v64l-27.6-55.2A112 112 0 0 0 96 128h-8a8 8 0 0 0-8 8v32a8 8 0 0 0 8 8z"
+            class="fa-primary"></path>
+        </svg>
+        <h1
+          class="text-2xl font-semibold text-gray-700 lg:text-3xl dark:text-white"
+        >
+          Experto en Vulcanización
+        </h1>
+      </div>
+
+      <P classExtras="pl-4">
+        Con más de 20 años de experiencia en el sector, ofrezco servicios
+        profesionales de vulcanización enfocados en la reparación y
+        mantenimiento de bandas transportadoras y correas industriales.
+        <br />
+        Utilizo técnicas especializadas y materiales de alta calidad para garantizar
+        soluciones duraderas, seguras y adaptadas a las necesidades de cada cliente.
+        <br />
+        Mi compromiso es brindar eficiencia, rapidez y confianza en cada trabajo.
+      </P>
+    </div>
+
+    <div class="gap-8 mt-8 md:mt-0 md:mx-4 p-1 flex-1">
+      <div class="flex justify-center">
+        <a href="/contactame" target="_blank" rel="noopener noreferrer">
+          <img
+            class="mask-b-from-90% object-cover m-auto size-80 rounded-xl aspect-square max-w-[200px]"
+            src="/image/Paul.webp"
+            alt="Retrato de Julio Castaño, experto en vulcanización"
+          />
+          <h2
+            class="mt-4 text-2xl text-center font-semibold text-gray-700 capitalize dark:text-white"
+          >
+            Julio Castaño
+          </h2>
+        </a>
+      </div>
+    </div>
+  </div>
+    
+</Section>

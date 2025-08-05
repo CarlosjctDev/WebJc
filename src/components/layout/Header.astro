@@ -1,0 +1,95 @@
+---
+import Favicon from "@assets/image/favicon.webp";
+import LinksDesktop from "@components/menu/desktop/desktop.astro";
+import {links} from "@components/menu/links.ts";
+import LinksMovil from "@components/menu/movil/movil.astro";
+import { Image } from "astro:assets";
+interface Props {
+	heightHeader: string;
+}
+const { heightHeader } = Astro.props;
+
+const linkInicio = links[0];
+---
+
+<header 
+class="fixed top-0 right-0 left-0 z-50 fondo-app-white dark:bg-app_dark">
+  <nav class="shadow-xs dark:shadow-none">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class=" flex justify-between items-center" style=`height: ${heightHeader};`>
+        <!-- Logo -->
+        {linkInicio && (
+            <a href={linkInicio.route_complete}
+              data-route-complete={linkInicio.route_complete}
+              data-route ={linkInicio.route}
+              class="h-full space-x-2 text-black text-2xl font-bold dark:text-app_primary select-none  z-50"
+            >              
+              <Image
+                src={Favicon}
+                alt="Logo Julio Castaño"
+                loading="eager"
+                class="h-full object-contain w-[64px]"
+              />              
+            </a>
+        )}
+
+        <!-- Links escritorio -->
+        <LinksDesktop links={links}/>
+        <!-- Menu movil-->
+        <LinksMovil links={links}/>
+
+      </div>
+    </div>
+  </nav>
+</header>
+
+<style is:global>
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px; /* Ajusta separación con el texto */
+    width: 0%;
+    height: 2px;
+    background-color: var(--app-color-primary);
+    transition: width 0.3s ease;
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  .nav-link:focus-visible {
+    outline: none;
+    box-shadow: 0 2px 0 0 var(--app-color-primary);
+  }  
+
+  .hamburger {    
+    transition:
+      transform 0.3s ease,
+      opacity 0.1s ease;
+    transform-origin: center;
+  }
+
+
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px; /* Ajusta separación con el texto */
+    width: 0%;
+    height: 2px;
+    background-color: var(--app-color-primary);
+    transition: width 0.3s ease;
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  .nav-link:focus-visible {
+    outline: none;
+    box-shadow: 0 2px 0 0 var(--app-color-primary);
+  }
+</style>
+<script src="/js/redirec.js"  defer></script>

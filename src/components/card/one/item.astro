@@ -1,0 +1,41 @@
+---
+import P from "@components/text/p.astro";
+interface Props{
+    title:string;
+    content:string;
+    bg: string;
+    svg: string;
+}
+const {
+    title, 
+    content,
+    bg,
+    svg,
+ } = Astro.props as Props;
+
+---
+<div
+    class="transition-opacity duration-500 opacity-100 "    
+>
+    <div
+        class="flex flex-col items-center fondo-app-white 
+        dark:bg-zinc-900
+        rounded-lg shadow-lg hover:shadow-xl 
+        transform transition-all duration-500 hover:scale-105"
+    >
+        <div
+            class=`p-3 ${bg} text-white 
+            w-full rounded-t-lg flex justify-center`
+        >
+            {svg && <div set:html={svg} />}
+        </div>
+        <div class="text-center p-4 max-h-[160px] min-h-[160px] flex flex-col">
+            <h3 class="text-xl font-semibold text-gray-800 dark:text-white ">
+                {title}
+            </h3>
+            <P classExtras="overflow-x-auto">
+                {content}               
+            </P>                    
+        </div>
+    </div>
+</div>

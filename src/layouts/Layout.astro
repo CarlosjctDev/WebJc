@@ -1,0 +1,83 @@
+---
+import "../assets/css/app.css";
+
+interface Props {
+	title: string;
+}
+const { title } = Astro.props;
+const heightHeader = "4rem";
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<script>
+			(function () {
+				const theme = localStorage.getItem("theme");
+				const root = document.documentElement;
+				const mediaQuery = window.matchMedia(
+					"(prefers-color-scheme: dark)",
+				);
+				if (theme === "dark" || (!theme && mediaQuery.matches)) {
+					root.classList.remove("light");
+					root.classList.add("dark");
+				} else {
+					root.classList.remove("dark");
+					root.classList.add("light");
+				}
+			})();
+		</script>
+
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="image/apple-touch-icon.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="image/favicon-32x32.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="16x16"
+			href="image/favicon-16x16.png"
+		/>
+		<link rel="manifest" href="site.webmanifest" />
+		<meta name="generator" content={Astro.generator} />
+
+		<!-- CSS global -->
+		<link rel="stylesheet" href="css/reset.css" />
+
+		<slot name="head" />
+		<title>{title}</title>
+	</head>
+	<body>
+		<div id="loader" class="hidden event-none">
+			<div class="loader"></div>
+		</div>
+
+		<div class="container-global flex-1 flex flex-col h-full">
+			<Header heightHeader={heightHeader} />
+			<main class="flex-1 pr-6 pl-6">
+				<div
+					class="container-main h-full md:block!"
+					style=`padding-top:${heightHeader};`
+				>
+					<slot />
+				</div>
+			</main>
+			<Footer />
+		</div>
+	</body>
+	<script type="module" src="js/theme.js"></script>
+	<script type="module" src="js/popper.min.js"></script>
+	<script type="module" src="js/tippy-bundle.umd.min.js"></script>
+	<script type="module" src="js/init.js"></script>
+</html>

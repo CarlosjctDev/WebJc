@@ -1,0 +1,38 @@
+---
+import Section from "@components/home/section.astro";
+interface Props {
+  classSection?: string;  
+  ClassContainerTitle?: string;
+  classTitle?: string;
+  title: string;
+  svgTitle: string;
+  classContainerItems?: string;
+
+}
+const { 
+    classSection  = "",    
+    ClassContainerTitle = "mb-4 md:w-2/3 lg:w-1/2  flex items-center gap-2",
+    classTitle = "text-2xl font-semibold text-gray-700  lg:text-3xl dark:text-white",    
+    title = "",
+    svgTitle = ``,
+    classContainerItems = `grid divide-x divide-y   
+    divide-gray-200 dark:divide-zinc-800 overflow-hidden  
+    rounded-2xl shadow-md     
+    md:grid-cols-[repeat(auto-fit,_minmax(200px,_1fr))]   
+    lg:divide-y-0  `
+ } = Astro.props as Props;
+ 
+
+--- 
+
+<Section classExtras={classSection}>
+    <div class={ClassContainerTitle}>
+        {svgTitle && <div set:html={svgTitle} />}
+        {title ? <h2 class={classTitle}>{title}</h2>  : null }            
+    </div>
+    <div
+    class={classContainerItems}>
+        <slot />
+    </div>
+
+</Section>   

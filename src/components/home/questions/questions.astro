@@ -1,0 +1,104 @@
+---
+import Section from "@components/home/section.astro";
+import SectionLocation from "@components/home/location/location.astro";
+import P from "@components/text/p.astro";
+import {links} from "@components/menu/links.ts";
+
+const linkContactame = links.find((item) => item.text.toLocaleLowerCase() == "contactame"); 
+let link = "";
+if(linkContactame){
+    const {
+        route_complete,        
+    } = linkContactame;
+    link = `<a `+ 
+    `href="${route_complete}"`+
+    `target="_blank"`+
+    `>formulario</a>`;
+}
+
+const questions = [
+    {
+        title: "Ubicación",
+        response: "Estoy ubicado en Barranquilla, Colombia.",
+    },
+    {
+        title: "Contacto",
+        response: `Completando el siguiente ${link} recibiré tus datos por correo y podré contactarte muy pronto.`,
+    },    
+];
+---
+
+<Section>
+    <div  class=" flex flex-row flex-wrap gap-4">
+        <div class="w-full md:w-1/2 lg:max-w-xl">
+            <SectionLocation clasesExtras="max-h-[340px] min-h-[340px] " />
+        </div>
+
+        <div class="flex-1 p-6 pt-0">
+            <h2 class="text-4xl font-bold color-ria-azul mb-4 flex items-center gap-2 scroll-mt-20" id="preguntasFrecuentes">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-question-mark-icon lucide-circle-question-mark"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg> 
+                Preguntas Frecuentes
+            </h2>
+            <div class="max-h-80 overflow-y-auto">
+                <div class="flex flex-col gap-4 overflow-hidden">                    
+                        {
+                            questions.map((question) => (
+                                <div class="transition-opacity duration-500 opacity-100">
+                                    <details open class="group transition-all duration-500 overflow-hidden group border border-gray-200 rounded-2xl p-6">
+                                        <summary class="flex justify-between cursor-pointer text-3xl font-semibold  duration-300 group-hover:text-(--app-color-primary)">
+                                            {question.title}
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                class="size-6 relative top-1 duration-500 group-open:rotate-45"
+                                            >
+                                                <>
+                                                    <path d="M5 12h14" />
+                                                    <path d="M12 5v14" />
+                                                </>
+                                            </svg>
+                                        </summary>
+                                        <div class="details-content overflow-hidden transition-all duration-500 ease-in-out max-h-0 group-open:max-h-[1000px]">
+                                            <P set:html={question.response} />
+                                        </div>
+                                    </details>
+                                </div>
+                            ))
+                        }                    
+                </div>
+            </div>
+        </div>
+    </div>
+</Section>
+<style>
+    details {
+        overflow: hidden;
+    }
+
+    details::details-content {
+        block-size: 0;
+        transition:
+            block-size 0.3s,
+            content-visibility 0.3s;
+        transition-behavior: allow-discrete;
+    }
+
+    details:open::details-content {
+        block-size: auto;
+    }
+
+    summary {
+        list-style: none;
+        /* Elimina el marcador por defecto */
+    }
+
+    summary::before {
+        content: "";
+        display: none;
+    }
+</style>

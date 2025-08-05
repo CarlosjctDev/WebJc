@@ -1,0 +1,17 @@
+---
+interface Props {
+	clasesExtras?: string;
+    clase?: string;
+}
+const { 
+    clasesExtras = "",
+    clase = "rounded-2xl h-full w-full"
+} = Astro.props;
+---
+<iframe 
+src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d16257418.139139334!2d-85.01854406960896!3d5.842060458503691!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e15a43aae1594a3%3A0x9a0d9a04eff2a340!2sColombia!5e0!3m2!1ses!2sco!4v1754336152572!5m2!1ses!2sco" 
+loading="lazy"
+style="border:0;" 
+allowfullscreen="" 
+referrerpolicy="no-referrer-when-downgrade" 
+class=`${clase} ${clasesExtras}`></iframe>

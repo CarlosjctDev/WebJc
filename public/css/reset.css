@@ -1,0 +1,39 @@
+
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  
+  * {    
+    interpolate-size: allow-keywords; /* permite animar si esta en px y pasa a auto */
+    scrollbar-width: thin;
+    scrollbar-color:var(--app-color-primary) #f1f1f1  ;      
+  }
+  body , html, #root {
+    height: 100%;    
+  }
+  body {
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  img, svg, video, canvas, audio, iframe, embed, object,picture {    
+    display: block;    
+  }  
+  input, button, textarea, select {
+    font: inherit;
+  }
+  
+  p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+  }
+  
+  p {
+    text-wrap: pretty;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    text-wrap: balance;
+  }
+  
+  #root, #__next {
+    isolation: isolate;
+  }
+  
