@@ -53,8 +53,6 @@ import Footer from "../components/layout/Footer.astro";
 		<meta name="generator" content={Astro.generator} />
 
 		<!-- CSS global -->
-		<link rel="stylesheet" href="css/reset.css" />
-
 		<slot name="head" />
 		<title>{title}</title>
 	</head>
@@ -76,8 +74,6 @@ import Footer from "../components/layout/Footer.astro";
 			<Footer />
 		</div>
 	</body>
-	<script type="module" src="js/theme.js"></script>
-	<script type="module" src="js/popper.min.js"></script>
-	<script type="module" src="js/tippy-bundle.umd.min.js"></script>
-	<script type="module" src="js/init.js"></script>
+	<slot name="scripts" />
+
 </html>
