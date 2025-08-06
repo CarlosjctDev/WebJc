@@ -2,13 +2,14 @@
 import Layout from "@layouts/Layout.astro";
 import P from '@components/text/p.astro';
 import Global  from "@components/global.astro";
+const BASE_PATH_PUBLIC = Astro.url.pathname.replace(Astro.originPathname,"/");
 ---
 
 <Layout title="Contactame">
     <Fragment slot="head">    
-        <link rel="stylesheet" href="./css/notyf.min.css">
+        <link rel="stylesheet" href={BASE_PATH_PUBLIC+"css/notyf.min.css"}>
     </Fragment>
-    <Global route="./"/>
+    <Global route={BASE_PATH_PUBLIC}/>
     <div class="h-full content-center">
         <section
             class="max-w-4xl p-6 mx-auto card-app-white 
@@ -148,5 +149,5 @@ import Global  from "@components/global.astro";
         </section>
     </div>
 </Layout>
-<script src="./js/email.min.js"  defer></script>
-<script src="./js/notyf.min.js" defer ></script>
+<script src={BASE_PATH_PUBLIC+"js/email.min.js"}  defer></script>
+<script src={BASE_PATH_PUBLIC+"js/notyf.min.js"} defer ></script>
