@@ -18,15 +18,16 @@ const redirectEvent = () => {
             if(menu.matches(":popover-open")) menu.hidePopover();
 
             if (PATHNAME === route && routeSearch?.includes("#")) {
-                window.location.href = "/WebJc"+routeSearch;
+                window.location.href =routeSearch;
                 return;
             }
             
 
             if(PATHNAME == route) return;
 
-            window.location.href ="/WebJc"+ routeSearch; 
+            window.location.href = routeSearch; 
         }
     })
 
 }
+
