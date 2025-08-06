@@ -1,0 +1,20 @@
+---
+interface Props {
+  clase?: string;
+  route: string;
+  target: string;
+  rel: string;
+}
+
+const { 
+    clase = "",
+    route,
+    target ="",
+    rel = ""
+} = Astro.props; 
+const BASE_PATH_PUBLIC = Astro.url.pathname.replace(Astro.originPathname,"/");
+---
+
+<a href={BASE_PATH_PUBLIC+route} class={clase} target={target} rel={rel}>
+    <slot/>
+</a>
