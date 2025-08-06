@@ -1,15 +1,40 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import P from '@components/text/p.astro';
-import Global  from "@components/global.astro";
 const BASE_PATH_PUBLIC = Astro.url.pathname.replace(Astro.originPathname,"/");
+const route = BASE_PATH_PUBLIC;
 ---
 
 <Layout title="Contactame">
-    <Fragment slot="head">    
-        <link rel="stylesheet" href={BASE_PATH_PUBLIC+"css/notyf.min.css"}>
+    <Fragment slot="head">
+        <link rel="stylesheet" href={route + "css/notyf.min.css"} />
+        <link rel="stylesheet" href={route + "css/reset.css"} />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href={route+"image/apple-touch-icon.png"}
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href={route+"image/favicon-32x32.png"}
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href={route+"image/favicon-16x16.png"}
+        />
+        <link rel="manifest" href={route+"site.webmanifest"} />
     </Fragment>
-    <Global route={BASE_PATH_PUBLIC}/>
+    <Fragment slot="scripts">
+        <script type="module" src={route + "js/redirec.js"}></script>
+        <script type="module" src={route + "js/theme.js"}></script>
+        <script type="module" src={route + "js/popper.min.js"}></script>
+        <script type="module" src={route + "js/tippy-bundle.umd.min.js"}></script>
+        <script type="module" src={route + "js/init.js"}></script>
+    </Fragment>    
     <div class="h-full content-center">
         <section
             class="max-w-4xl p-6 mx-auto card-app-white 
