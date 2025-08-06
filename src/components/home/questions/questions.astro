@@ -2,7 +2,10 @@
 import Section from "@components/home/section.astro";
 import SectionLocation from "@components/home/location/location.astro";
 import P from "@components/text/p.astro";
-import {links} from "@components/menu/links.ts";
+import {generateLinks} from "@components/menu/links";
+
+const BASE_PATH_PUBLIC = Astro.url.pathname.replace(Astro.originPathname,"/");
+const links = generateLinks(BASE_PATH_PUBLIC);
 
 const linkContactame = links.find((item) => item.text.toLocaleLowerCase() == "contactame"); 
 let link = "";
